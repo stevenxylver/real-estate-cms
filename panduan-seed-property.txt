@@ -1,0 +1,121 @@
+================================================================================
+                    PANDUAN SEED DATA PROPERTY KE STRAPI 5
+================================================================================
+
+CATATAN PENTING:
+--------------------------------------------------------------------------------
+Di Strapi 5, insert data langsung ke SQLite TIDAK AKAN BEKERJA karena Strapi 5
+menggunakan Documents API dengan sistem document_id yang berbeda.
+Gunakan script seed-properties.js untuk insert data dengan benar.
+
+
+================================================================================
+                         LANGKAH-LANGKAH SEED DATA
+================================================================================
+
+STEP 1: PASTIKAN STRAPI SUDAH BERHENTI
+--------------------------------------------------------------------------------
+Tekan Ctrl+C di terminal yang menjalankan Strapi
+Atau tutup terminal tersebut
+
+
+STEP 2: BUKA TERMINAL DI FOLDER CMS
+--------------------------------------------------------------------------------
+cd c:\Users\stevm\Downloads\RealEstate\real-estate-cms
+
+
+STEP 3: (OPSIONAL) KOSONGKAN DATA LAMA
+--------------------------------------------------------------------------------
+Jika ingin menghapus semua data property yang ada:
+
+sqlite3 .tmp/data.db "DELETE FROM properties;"
+
+
+STEP 4: JALANKAN SCRIPT SEED
+--------------------------------------------------------------------------------
+node scripts/seed-properties.js
+
+Tunggu sampai muncul pesan: "Property seed completed!"
+
+
+STEP 5: JALANKAN STRAPI KEMBALI
+--------------------------------------------------------------------------------
+npm run develop
+
+Tunggu sampai Strapi selesai loading (~30 detik)
+
+
+STEP 6: CEK DI STRAPI ADMIN
+--------------------------------------------------------------------------------
+1. Buka browser: http://localhost:1337/admin
+2. Login dengan akun admin
+3. Klik "Content Manager" di sidebar kiri
+4. Pilih "Property"
+5. Data property seharusnya sudah muncul!
+
+
+================================================================================
+                    MENAMBAH PROPERTY BARU KE SEED SCRIPT
+================================================================================
+
+Buka file: scripts/seed-properties.js
+
+Tambahkan object baru ke array mockProperties dengan format:
+
+{
+  title: 'Nama Property',
+  slug: 'nama-property',          // lowercase, pakai dash (-)
+  price_start: 5000000000,        // harga dalam rupiah
+  bedrooms: 4,                    // jumlah kamar tidur
+  bathrooms: 3,                   // jumlah kamar mandi
+  location: 'Lokasi, Kota',       // lokasi lengkap
+  status_sale: 'For Sale',        // 'For Sale' atau 'For Rent'
+},
+
+Kemudian jalankan ulang seed script (STEP 4 & 5).
+
+
+================================================================================
+                         VERIFIKASI DATA DI DATABASE
+================================================================================
+
+Untuk melihat data yang sudah tersimpan:
+
+sqlite3 .tmp/data.db "SELECT id, title, slug FROM properties;"
+
+Untuk menghitung total data:
+
+sqlite3 .tmp/data.db "SELECT COUNT(*) FROM properties;"
+
+
+================================================================================
+                              TROUBLESHOOTING
+================================================================================
+
+MASALAH: Data tidak muncul di Strapi Admin
+SOLUSI:
+1. Pastikan Strapi sudah di-restart setelah seed
+2. Cek apakah data ada di database dengan query SELECT
+3. Jalankan ulang seed script
+
+MASALAH: Error "already exists" saat seed
+SOLUSI:
+Data dengan slug yang sama sudah ada. Hapus dulu data lama:
+sqlite3 .tmp/data.db "DELETE FROM properties WHERE slug='nama-slug';"
+
+MASALAH: Error "Cannot find module"
+SOLUSI:
+Jalankan npm install terlebih dahulu:
+npm install
+
+
+================================================================================
+                           SCRIPT FILES LOCATION
+================================================================================
+
+Seed Script    : scripts/seed-properties.js
+Database File  : .tmp/data.db
+Panduan Lama   : panduan-insert-sql.txt (untuk referensi kolom)
+
+
+================================================================================

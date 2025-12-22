@@ -1,0 +1,53 @@
+services:
+  - type: web
+    name: real-estate-strapi
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /_health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_CLIENT
+        value: postgres
+      - key: DATABASE_HOST
+        fromDatabase:
+          name: strapi-db
+          property: host
+      - key: DATABASE_PORT
+        fromDatabase:
+          name: strapi-db
+          property: port
+      - key: DATABASE_NAME
+        fromDatabase:
+          name: strapi-db
+          property: database
+      - key: DATABASE_USERNAME
+        fromDatabase:
+          name: strapi-db
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: strapi-db
+          property: password
+      - key: DATABASE_SSL
+        value: "true"
+      - key: DATABASE_SSL_REJECT_UNAUTHORIZED
+        value: "false"
+      - key: APP_KEYS
+        generateValue: true
+      - key: API_TOKEN_SALT
+        generateValue: true
+      - key: ADMIN_JWT_SECRET
+        generateValue: true
+      - key: TRANSFER_TOKEN_SALT
+        generateValue: true
+      - key: JWT_SECRET
+        generateValue: true
+
+databases:
+  - name: strapi-db
+    plan: free
+    databaseName: strapi
+    user: strapi

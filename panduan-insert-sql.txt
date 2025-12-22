@@ -1,0 +1,95 @@
+================================================================================
+                    PANDUAN INSERT DATA KE STRAPI SQLITE
+================================================================================
+
+STEP 1: BUKA SQLITE CLI
+--------------------------------------------------------------------------------
+cd c:\Users\stevm\Downloads\RealEstate\real-estate-cms
+sqlite3 ".tmp/data.db"
+
+
+STEP 2: CEK DATA YANG ADA (OPSIONAL)
+--------------------------------------------------------------------------------
+SELECT id, title, slug FROM properties;
+
+
+STEP 3: INSERT DATA BARU
+--------------------------------------------------------------------------------
+Gunakan format berikut:
+
+INSERT INTO properties (
+    document_id,
+    title,
+    slug,
+    price_start,
+    bedrooms,
+    bathrooms,
+    location,
+    status_sale,
+    created_at,
+    updated_at,
+    published_at,
+    locale
+) VALUES (
+    'unique-id-001',           -- ID unik (string, harus berbeda tiap entry)
+    'Nama Property',           -- Judul property
+    'nama-property',           -- URL slug (lowercase, pakai dash -)
+    5000000000,                -- Harga (tanpa titik/koma)
+    4,                         -- Jumlah kamar tidur
+    3,                         -- Jumlah kamar mandi
+    'BSD City, Tangerang',     -- Lokasi
+    'For Sale',                -- Status: 'For Sale' atau 'For Rent'
+    1734500000000,             -- Created timestamp (milliseconds)
+    1734500000000,             -- Updated timestamp (milliseconds)
+    1734500000000,             -- Published timestamp (WAJIB DIISI agar muncul di API)
+    'en'                       -- Locale
+);
+
+
+CONTOH INSERT NYATA:
+--------------------------------------------------------------------------------
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('villa-bali-01', 'Villa Bali Modern', 'villa-bali-modern', 3500000000, 5, 4, 'Bali, Indonesia', 'For Sale', 1734500000000, 1734500000000, 1734500000000, 'en');
+
+
+STEP 4: VERIFIKASI DATA
+--------------------------------------------------------------------------------
+SELECT COUNT(*) FROM properties;
+SELECT id, title, price_start FROM properties ORDER BY id DESC LIMIT 5;
+
+
+STEP 5: KELUAR SQLITE
+--------------------------------------------------------------------------------
+.quit
+
+
+STEP 6: RESTART STRAPI (AGAR DATA MUNCUL DI ADMIN)
+--------------------------------------------------------------------------------
+1. Stop Strapi yang sedang jalan (Ctrl+C di terminal)
+2. Jalankan ulang:
+   npm run develop
+
+
+================================================================================
+                        CATATAN PENTING
+================================================================================
+
+1. document_id    : Harus UNIK untuk setiap entry
+2. published_at   : WAJIB DIISI agar data muncul di API
+3. price_start    : Angka bulat tanpa pemisah ribuan
+4. slug           : Gunakan lowercase dan dash (-) bukan spasi
+5. Setelah insert : Restart Strapi agar data muncul di Admin Panel
+
+
+================================================================================
+                    INSERT VIA POWERSHELL (BATCH)
+================================================================================
+
+Jika ingin insert banyak data sekaligus dari file:
+
+1. Buat file .txt berisi query SQL (contoh: seed-data.txt)
+2. Jalankan:
+   Get-Content seed-data.txt | sqlite3 ".tmp/data.db"
+
+
+================================================================================

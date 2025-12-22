@@ -1,0 +1,54 @@
+-- SQL Script untuk INSERT semua mockProperties ke Strapi SQLite
+-- Jalankan dengan: sqlite3 ".tmp/data.db" < seed-data.txt
+
+-- Dharmawangsa
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('dharmawangsa01', 'Dharmawangsa', 'dharmawangsa', 6000000000, 5, 3, 'BSD City, Tangerang', 'For Sale', 1734500000000, 1734500000000, 1734500000000, 'en');
+
+-- Nivara
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('nivara01', 'Nivara', 'nivara', 5900000000, 5, 3, 'BSD City, Tangerang', 'For Sale', 1734500000000, 1734500000000, 1734500000000, 'en');
+
+-- Azzura
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('azzura01', 'Azzura', 'azzura', 5000000000, 4, 3, 'BSD City, Tangerang', 'For Sale', 1734500000000, 1734500000000, 1734500000000, 'en');
+
+-- Botanica Adila
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('botanica-adila01', 'Botanica Adila', 'botanica-adila', 4000000000, 4, 2, 'BSD City, Tangerang', 'For Sale', 1734500000000, 1734500000000, 1734500000000, 'en');
+
+-- Botanica Bellis
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('botanica-bellis01', 'Botanica Bellis', 'botanica-bellis', 2900000000, 3, 2, 'BSD City, Tangerang', 'For Sale', 1734500000000, 1734500000000, 1734500000000, 'en');
+
+-- Riviera
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('riviera01', 'Riviera', 'riviera', 1700000000, 3, 2, 'BSD City, Tangerang', 'For Sale', 1734500000000, 1734500000000, 1734500000000, 'en');
+
+-- Vista
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('vista01', 'Vista', 'vista', 3000000000, 4, 2, 'BSD City, Tangerang', 'For Sale', 1734500000000, 1734500000000, 1734500000000, 'en');
+
+-- Wichita
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('wichita01', 'Wichita', 'wichita', 1500000000, 3, 2, 'BSD City, Tangerang', 'For Sale', 1734500000000, 1734500000000, 1734500000000, 'en');
+
+-- Nordic
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('nordic01', 'Nordic', 'nordic', 2000000000, 3, 2, 'BSD City, Tangerang', 'For Sale', 1734500000000, 1734500000000, 1734500000000, 'en');
+
+-- Emerald Core (Commercial)
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('emerald-core01', 'Emerald Core', 'emerald-core', 8000000000, 0, 4, 'BSD City, Tangerang', 'For Rent', 1734500000000, 1734500000000, 1734500000000, 'en');
+
+-- Botanica Avenue 2 (Commercial)
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('botanica-avenue-2-01', 'Botanica Avenue 2', 'botanica-avenue-2', 4000000000, 0, 2, 'BSD City, Tangerang', 'For Rent', 1734500000000, 1734500000000, 1734500000000, 'en');
+
+-- Kebayoran Square (Commercial)
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('kebayoran-square01', 'Kebayoran Square', 'kebayoran-square', 4000000000, 0, 2, 'BSD City, Tangerang', 'For Rent', 1734500000000, 1734500000000, 1734500000000, 'en');
+
+-- U Town Avenue (Commercial)
+INSERT INTO properties (document_id, title, slug, price_start, bedrooms, bathrooms, location, status_sale, created_at, updated_at, published_at, locale) 
+VALUES ('u-town-avenue01', 'U Town Avenue', 'u-town-avenue', 4000000000, 0, 2, 'BSD City, Tangerang', 'For Rent', 1734500000000, 1734500000000, 1734500000000, 'en');

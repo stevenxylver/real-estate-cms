@@ -1,0 +1,101 @@
+{
+  "kind": "collectionType",
+  "collectionName": "properties",
+  "info": {
+    "singularName": "property",
+    "pluralName": "properties",
+    "displayName": "Property"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "priceStart": {
+      "type": "integer"
+    },
+    "promo": {
+      "type": "string"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Residential",
+        "Apartment",
+        "Commercial"
+      ]
+    },
+    "bedrooms": {
+      "type": "integer"
+    },
+    "bathrooms": {
+      "type": "integer"
+    },
+    "location": {
+      "type": "string"
+    },
+    "status_sale": {
+      "type": "enumeration",
+      "enum": [
+        "For Sale",
+        "Sold",
+        "Coming Soon"
+      ]
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "roomvirtual": {
+      "type": "text"
+    },
+    "luastanah": {
+      "type": "string"
+    },
+    "luasbangunan": {
+      "type": "string"
+    },
+    "detailproperti": {
+      "type": "text"
+    },
+    "totalunit": {
+      "type": "integer"
+    },
+    "unitleft": {
+      "type": "integer"
+    },
+    "brosur": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

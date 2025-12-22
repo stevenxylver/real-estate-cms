@@ -1,0 +1,127 @@
+================================================================================
+                    PANDUAN POST PROPERTY VIA REST API
+================================================================================
+
+STEP 1: SETUP PERMISSION DI STRAPI ADMIN
+--------------------------------------------------------------------------------
+1. Buka browser: http://localhost:1337/admin
+2. Login dengan akun admin
+3. Klik "Settings" di sidebar kiri
+4. Klik "Users & Permissions Plugin" > "Roles"
+5. Klik "Public"
+6. Scroll ke bawah, cari "Property"
+7. Centang: ✅ create ✅ find ✅ findOne
+8. Klik "Save" di kanan atas
+
+
+================================================================================
+                         FORMAT API REQUEST
+================================================================================
+
+ENDPOINT: POST http://localhost:1337/api/properties
+
+HEADERS:
+    Content-Type: application/json
+
+BODY (JSON):
+{
+  "data": {
+    "title": "Nama Property",
+    "slug": "nama-property",
+    "price_start": 5000000000,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "location": "BSD City, Tangerang",
+    "status_sale": "For Sale"
+  }
+}
+
+
+================================================================================
+                    CONTOH MENGGUNAKAN CURL (TERMINAL)
+================================================================================
+
+curl -X POST http://localhost:1337/api/properties ^
+  -H "Content-Type: application/json" ^
+  -d "{\"data\":{\"title\":\"Villa Modern\",\"slug\":\"villa-modern\",\"price_start\":5000000000,\"bedrooms\":4,\"bathrooms\":3,\"location\":\"BSD City\",\"status_sale\":\"For Sale\"}}"
+
+
+================================================================================
+                    CONTOH MENGGUNAKAN JAVASCRIPT
+================================================================================
+
+// Menggunakan fetch API
+const response = await fetch('http://localhost:1337/api/properties', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    data: {
+      title: 'Villa Modern',
+      slug: 'villa-modern',
+      price_start: 5000000000,
+      bedrooms: 4,
+      bathrooms: 3,
+      location: 'BSD City, Tangerang',
+      status_sale: 'For Sale',
+    },
+  }),
+});
+
+const result = await response.json();
+console.log(result);
+
+
+================================================================================
+                    CONTOH RESPONSE SUKSES
+================================================================================
+
+{
+  "data": {
+    "id": 1,
+    "documentId": "abc123xyz",
+    "title": "Villa Modern",
+    "slug": "villa-modern",
+    "price_start": 5000000000,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "location": "BSD City, Tangerang",
+    "status_sale": "For Sale",
+    "createdAt": "2024-12-18T04:00:00.000Z",
+    "updatedAt": "2024-12-18T04:00:00.000Z",
+    "publishedAt": "2024-12-18T04:00:00.000Z"
+  },
+  "meta": {}
+}
+
+
+================================================================================
+                    CATATAN PENTING
+================================================================================
+
+1. slug        : Harus lowercase, gunakan dash (-) untuk spasi
+2. price_start : Angka tanpa titik/koma pemisah ribuan
+3. status_sale : Gunakan "For Sale" atau "For Rent"
+4. Permission  : Pastikan sudah setup di Strapi Admin (Step 1)
+
+
+================================================================================
+                         API LAINNYA
+================================================================================
+
+GET ALL PROPERTIES:
+    GET http://localhost:1337/api/properties
+
+GET SINGLE PROPERTY:
+    GET http://localhost:1337/api/properties/:id
+
+UPDATE PROPERTY:
+    PUT http://localhost:1337/api/properties/:id
+    Body: { "data": { ...fields to update... } }
+
+DELETE PROPERTY:
+    DELETE http://localhost:1337/api/properties/:id
+
+
+================================================================================
