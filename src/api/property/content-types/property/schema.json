@@ -19,7 +19,7 @@
       "targetField": "title"
     },
     "priceStart": {
-      "type": "integer"
+      "type": "biginteger"
     },
     "promo": {
       "type": "string"
