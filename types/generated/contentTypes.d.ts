@@ -596,6 +596,35 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCompanyCompany extends Struct.SingleTypeSchema {
+  collectionName: 'companies';
+  info: {
+    displayName: 'Company';
+    pluralName: 'companies';
+    singularName: 'company';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::company.company'
+    > &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images'>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactInfoContactInfo extends Struct.SingleTypeSchema {
   collectionName: 'contact_infos';
   info: {
@@ -766,7 +795,7 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     location: Schema.Attribute.String;
     luasbangunan: Schema.Attribute.String;
     luastanah: Schema.Attribute.String;
-    priceStart: Schema.Attribute.Integer;
+    priceStart: Schema.Attribute.BigInteger;
     promo: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     roomvirtual: Schema.Attribute.Text;
@@ -1298,6 +1327,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::banner.banner': ApiBannerBanner;
       'api::category.category': ApiCategoryCategory;
+      'api::company.company': ApiCompanyCompany;
       'api::contact-info.contact-info': ApiContactInfoContactInfo;
       'api::facility.facility': ApiFacilityFacility;
       'api::faq.faq': ApiFaqFaq;
