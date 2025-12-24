@@ -774,6 +774,7 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     bathrooms: Schema.Attribute.Integer;
     bedrooms: Schema.Attribute.Integer;
     brosur: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    brosurLink: Schema.Attribute.String;
     category: Schema.Attribute.Enumeration<
       ['Residential', 'Apartment', 'Commercial']
     >;
