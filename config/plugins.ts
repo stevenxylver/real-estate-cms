@@ -15,6 +15,12 @@ module.exports = ({ env }) => {
                         api_key: cloudinaryKey,
                         api_secret: cloudinarySecret,
                     },
+                    actionOptions: {
+                        upload: {
+                            resource_type: 'auto',
+                        },
+                        delete: {},
+                    },
                 },
             },
         };
